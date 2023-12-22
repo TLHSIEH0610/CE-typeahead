@@ -1,6 +1,7 @@
 // requirement:
 // 1.show at most 8 results
 // 2.results should be ordered alphabetically
+// 3.the user’s input should be case insensitive
 
 import express from "express";
 import cors from "cors";
