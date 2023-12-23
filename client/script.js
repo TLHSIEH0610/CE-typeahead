@@ -4,12 +4,13 @@
 
 const search = document.getElementById("search");
 const results = document.getElementById("results");
+const body = document.body;
 let currentIndex = -1;
 
 search.addEventListener("input", function () {
   const query = this.value.toLowerCase();
 
-  fetch(`http://localhost:4000/states?search=${query}`) //todo: env variable
+  fetch(`http://localhost:4000/states?search=${query}`)
     .then((response) => response.json())
     .then((states) => showResult(states))
     .catch((error) => console.error("Error:", error));
@@ -33,6 +34,13 @@ search.addEventListener("keydown", function (e) {
   }
 });
 
+body.addEventListener("click", function (e) {
+  const tag = e.target.tagName;
+  if (!["INPUT", "UL", "LI"].includes(tag)) {
+    results.innerHTML = "";
+  }
+});
+
 function showResult(states) {
   results.innerHTML = "";
   currentIndex = -1;
@@ -40,7 +48,6 @@ function showResult(states) {
     states.forEach(function (state, index) {
       const listItem = document.createElement("li");
       listItem.textContent = state;
-      //mouse event
       listItem.addEventListener("click", function () {
         search.value = state;
         results.innerHTML = "";
@@ -52,7 +59,6 @@ function showResult(states) {
       results.appendChild(listItem);
     });
 
-    // default highlight the fist result
     highlightResult();
   } else {
     const listItem = document.createElement("li");
