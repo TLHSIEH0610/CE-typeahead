@@ -7,7 +7,7 @@ import express from "express";
 import cors from "cors";
 import states from "./states.js";
 
-const server_port = process.env.server_port || 4000;
+const server_port = 4000;
 const maxResult = 8;
 
 const app = express();
