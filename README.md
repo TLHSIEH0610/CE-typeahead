@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 
  ```bash
  git clone https://github.com/TLHSIEH0610/CE-typeahead.git
